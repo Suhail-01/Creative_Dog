@@ -56,23 +56,23 @@
 
 
 
-import React,{useEffect} from 'react'
+import React,{useEffect, useRef} from 'react'
 import * as THREE from 'three'
 import {Canvas, useThree} from '@react-three/fiber'
 import {OrbitControls, useGLTF, useTexture, useAnimations} from '@react-three/drei'
+import gsap from 'gsap'
+import {useGSAP} from '@gsap/react'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(useGSAP)
+gsap.registerPlugin(ScrollTrigger)
 
 const DogModel = () => {
     const scene = useGLTF("/models/dog.drc.glb")
     useThree(({camera}) => {
         camera.position.z = 0.6
-        
     })
-    // useEffect(()=>{
-    //     scene.scene.traverse((child)=>{
-    //         console.log(child.name, child.type)
-    //     })
-    // }, [])
-    
+
     const {actions} = useAnimations(scene.animations, scene.scene)
     useEffect(()=>{
         actions["Take 001"].play()
@@ -92,14 +92,32 @@ const DogModel = () => {
         map: branchMap
     })
 
-scene.scene.traverse((child)=>{
-    if(child.name.includes("DOG_BODY")){
-        child.material = dogMaterial
-    }
-    if(child.name.includes("BRANCHS")){
-        child.material = branchMaterial
-    }
-})
+    const dogRef = useRef(scene)
+    useGSAP(() => {
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#section-1",
+                endTrigger: "#section-3",
+                start: "top top",
+                end: "bottom bottom",
+                markers: true,
+                scrub: true,
+            }
+        })
+        tl.to(dogRef.current.scene.position,{
+            z: "-=0.5",
+            y: "+=0.1"
+        })
+    }, [])
+
+    scene.scene.traverse((child)=>{
+        if(child.name.includes("DOG_BODY")){
+            child.material = dogMaterial
+        }
+        if(child.name.includes("BRANCHS")){
+            child.material = branchMaterial
+        }
+    })
 
     return (
         <>
@@ -112,9 +130,7 @@ scene.scene.traverse((child)=>{
 
 const Dog = () => {
   return (
-    <Canvas>
         <DogModel/>
-    </Canvas>
   )
 }
 
