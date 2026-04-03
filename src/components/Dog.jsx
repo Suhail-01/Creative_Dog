@@ -92,7 +92,7 @@ const DogModel = () => {
         map: branchMap
     })
 
-    const dogRef = useRef(scene)
+    const dogRef = useRef(scene.scene)
     useGSAP(() => {
         const tl = gsap.timeline({
             scrollTrigger: {
@@ -104,10 +104,21 @@ const DogModel = () => {
                 scrub: true,
             }
         })
-        tl.to(dogRef.current.scene.position,{
-            z: "-=0.5",
+        tl.to(dogRef.current.position,{
+            z: "-=0.75",
             y: "+=0.1"
         })
+        .to(dogRef.current.rotation,{
+            x: `+=${Math.PI/15}`
+        })
+        .to(dogRef.current.rotation,{
+            y: `-=${Math.PI}`
+        },"third")
+        .to(dogRef.current.position,{
+            x: "-=0.5",
+            z: "+=0.6",
+            y: "-=0.05"
+        },"third")
     }, [])
 
     scene.scene.traverse((child)=>{
