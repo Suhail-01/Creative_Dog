@@ -54,8 +54,41 @@ entertainment, arts & culture.</p>
           </div>
         </div>
       </div>
+      <div className="first-line"></div>
+      <div className="second-line"></div>
     </section>
-    <section id='section-2'></section>
+    <section id='section-2'>
+      <div className="titles">
+        <div className="title">
+          <small>2020 ONGOING</small>
+          <h1>Tomorrowland</h1>
+        </div>
+        <div className="title">
+          <small>2020 ONGOING</small>
+          <h1>Navy Pier</h1>
+        </div>
+                <div className="title">
+          <small>2020 ONGOING</small>
+          <h1>MSI Chicago</h1>
+        </div>
+                        <div className="title">
+          <small>2020 ONGOING</small>
+          <h1>This Was Louise's Phone</h1>
+        </div>
+                        <div className="title">
+          <small>2020 ONGOING</small>
+          <h1>KIKK Festival 2018</h1>
+        </div>
+                        <div className="title">
+          <small>2020 ONGOING</small>
+          <h1>The Kennedy Center</h1>
+        </div>
+                        <div className="title">
+          <small>2020 ONGOING</small>
+          <h1>Royal Opera Of Wallonia</h1>
+        </div>
+      </div>
+    </section>
     <section id='section-3'></section>
     </>
   )

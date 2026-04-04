@@ -38,7 +38,7 @@ section {
 #section-1 .middle {
   display: flex;
   width: 100%;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 400px);
 }
 
 #section-1 .middle .left {
@@ -95,4 +95,52 @@ section {
   font-size: 0.85rem;
   opacity: 0.6;
   line-height: 1.6;
+}
+
+#section-1 {
+  position: relative;
+}
+
+#section-1 .first-line {
+  width: 40rem;
+  background-color: red;
+  height: 1px;
+  position: absolute;
+  top: 29%;
+  left: -13%;
+  transform: rotate(45deg);
+  z-index: 3;
+}
+#section-1 .second-line {
+  width: 10rem;
+  background-color: red;
+  height: 1px;
+  position: absolute;
+  top: 29%;
+  right: 13%;
+  transform: rotate(135deg);
+  z-index: 3;
+}
+
+#section-2 .titles {
+  display: flex;
+  flex-direction: column;
+  padding-left: 17rem;
+  /* padding-top: 3rem; */
+  padding-block: 4rem;
+}
+#section-2 .titles .title {
+  display: flex;
+  gap: 4rem;
+  opacity: 0.6;
+  padding-block: 2rem;
+}
+#section-2 h1{
+  font-size: 4rem;
+  font-weight: 100;
+  line-height: 1;
+}
+#section-2 small {
+  margin-top: 0.6rem;
+  font-size: 0.5rem;
 }
