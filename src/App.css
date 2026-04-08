@@ -12,7 +12,7 @@ html, body, #root {
 
 section {
   min-height: 100vh;
-  border: 2px solid white;
+  /* border: 2px solid white; */
   position: relative;
   z-index: 2;
 }
@@ -127,13 +127,18 @@ section {
   flex-direction: column;
   padding-left: 17rem;
   /* padding-top: 3rem; */
-  padding-block: 4rem;
+  margin-block: 4rem;
 }
 #section-2 .titles .title {
   display: flex;
   gap: 4rem;
-  opacity: 0.6;
+  opacity: 0.4;
   padding-block: 2rem;
+  transition: all 0.3s linear;
+  cursor: pointer;
+}
+#section-2 .titles .title:hover {
+  opacity: 1;
 }
 #section-2 h1{
   font-size: 4rem;
@@ -143,4 +148,114 @@ section {
 #section-2 small {
   margin-top: 0.6rem;
   font-size: 0.5rem;
+}
+.bg-div {
+  background-image: url(/background-xxs.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: opacity 0.3s linear;
+}
+
+body:has(#section-2 .title:hover) .bg-div {
+  opacity: 0;
+}
+
+.images {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.images img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.3s linear;
+}
+
+body:has(#section-2 .title[img-title="Tomorrowland"]:hover) .images #tommorowland {
+  opacity: 1;
+  background-color: rgb(4, 8, 29);
+}
+
+body:has(#section-2 .title[img-title="Navy Pier"]:hover) .images #navy-pier {
+  opacity: 1;
+}
+
+body:has(#section-2 .title[img-title="MSI Chicago"]:hover) .images #msi-chicago {
+  opacity: 1;
+}
+
+body:has(#section-2 .title[img-title="This Was Louise's Phone"]:hover) .images #phone {
+  opacity: 1;
+}
+
+body:has(#section-2 .title[img-title="KIKK Festival 2018"]:hover) .images #kikk {
+  opacity: 1;
+  background-color: rgb(1,15,92,0.679);
+}
+
+body:has(#section-2 .title[img-title="The Kennedy Center"]:hover) .images #kennedy {
+  opacity: 1;
+}
+
+body:has(#section-2 .title[img-title="Royal Opera Of Wallonia"]:hover) .images #opera {
+  opacity: 1;
+  background-color: rgb(176,4,4);
+}
+#section-3 {
+  padding-block: 10rem;
+  padding-inline: 10rem;
+  z-index: 0;
+}
+
+#section-3 .top,
+#section-3 .bottom {
+  display: flex;
+  width: 100%;
+}
+
+#section-3 .top .left {
+  width: 50%;
+}
+
+#section-3 .top .right {
+  width: 50%;
+}
+
+#section-3 .top .left h3 {
+  padding-left: 5rem;
+  font-size: 1.8rem;
+  line-height: 1.2;
+  opacity: 0.5;
+  position: relative;
+  z-index: -1;
+}
+
+#section-3 .bottom {
+  margin-top: 3rem;
+}
+
+#section-3 .bottom .left {
+  width: 50%;
+}
+
+#section-3 .bottom .right {
+  display: flex;
+  gap: 2rem;
+  width: 50%;
+}
+
+#section-3 .bottom .right p {
+  opacity: 0.5;
+  line-height: 1.6;
+  font-size: 0.6rem;
+  width: 50%;
 }

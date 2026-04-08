@@ -5,9 +5,18 @@ import {Canvas} from '@react-three/fiber'
 function App() {
     return (
     <>
-    <div style={{position:"fixed", top:0, left:0, height:"100vh", width:"100vw", backgroundImage:"url(/background-xxs.png)", backgroundRepeat:"no-repeat", backgroundSize:"cover", zIndex:0}}/>
+    <div className="bg-div" style={{position:"fixed", top:0, left:0, height:"100vh", width:"100vw"}}/>
     <main>
-      <Canvas style={{height:"100vh", width:"100vw", position:"fixed", top:0, left:0, zIndex: 1}}>
+      <div className="images">
+        <img id='tommorowland' src="/tommorowland.png" alt="" />
+        <img id='navy-pier' src="/navy-pier.png" alt="" />
+        <img id='msi-chicago' src="/msi-chicago.png" alt="" />
+        <img id='phone' src="/phone.png" alt="" />
+        <img id='kikk' src="/kikk.png" alt="" />
+        <img id='kennedy' src="/kennedy.png" alt="" />
+        <img id='opera' src="/opera.png" alt="" />
+      </div>
+      <Canvas id='canvas-elem' style={{height:"100vh", width:"100vw", position:"fixed", top:0, left:0, zIndex: 2}}>
         <Dog />
       </Canvas>
     </main>
@@ -59,37 +68,51 @@ entertainment, arts & culture.</p>
     </section>
     <section id='section-2'>
       <div className="titles">
-        <div className="title">
+        <div img-title="Tomorrowland" className="title">
           <small>2020 ONGOING</small>
           <h1>Tomorrowland</h1>
         </div>
-        <div className="title">
+        <div img-title="Navy Pier" className="title">
           <small>2020 ONGOING</small>
           <h1>Navy Pier</h1>
         </div>
-                <div className="title">
+        <div img-title="MSI Chicago" className="title">
           <small>2020 ONGOING</small>
           <h1>MSI Chicago</h1>
         </div>
-                        <div className="title">
+        <div img-title="This Was Louises Phone" className="title">
           <small>2020 ONGOING</small>
           <h1>This Was Louise's Phone</h1>
         </div>
-                        <div className="title">
+        <div img-title="KIKK Festival 2018" className="title">
           <small>2020 ONGOING</small>
           <h1>KIKK Festival 2018</h1>
         </div>
-                        <div className="title">
+        <div img-title="The Kennedy Center" className="title">
           <small>2020 ONGOING</small>
           <h1>The Kennedy Center</h1>
         </div>
-                        <div className="title">
+        <div img-title="Royal Opera Of Wallonia" className="title">
           <small>2020 ONGOING</small>
           <h1>Royal Opera Of Wallonia</h1>
         </div>
       </div>
     </section>
-    <section id='section-3'></section>
+    <section id='section-3'>
+      <div className="top">
+        <div className="left">
+          <h3>Lorem, ipsum dolor sit amet consectetur <br /> adipisicing elit. Inventore voluptas <br /> adipisci suscipit nihil.</h3>
+        </div>
+        <div className="right"></div>
+      </div>
+      <div className="bottom">
+        <div className="left"></div>
+        <div className="right">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit totam, veritatis nihil, ad quisquam maxime, animi nostrum blanditiis eligendi soluta ipsa incidunt corrupti quibusdam! Explicabo quidem facilis error repudiandae aperiam sapiente quam laudantium nulla cum amet quibusdam ut ea commodi dolore totam, laboriosam minus id similique fugiat! Architecto, inventore voluptatem.</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit totam, veritatis nihil, ad quisquam maxime, animi nostrum blanditiis eligendi soluta ipsa incidunt corrupti quibusdam! Explicabo quidem facilis error repudiandae aperiam sapiente quam laudantium nulla cum amet quibusdam ut ea commodi dolore totam, laboriosam minus id similique fugiat! Architecto, inventore voluptatem.</p>
+        </div>
+      </div>
+    </section>
     </>
   )
 }
