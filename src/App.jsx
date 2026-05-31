@@ -1,12 +1,61 @@
 import './App.css'
 import Dog from './components/Dog'
-import {Canvas} from '@react-three/fiber'
+import FluidGlass from './components/FluidGlass'
+import { Canvas } from '@react-three/fiber'
+import { useEffect, useRef } from 'react'
+import PremiumFluid from './components/PremiumFluid'
+import Loader from './components/Loader/Loader'
 
 function App() {
-    return (
+  const audioRef = useRef(null)
+
+  useEffect(() => {
+    const audio = audioRef.current
+
+    if (!audio) return
+
+    audio.volume = 0.3
+
+    const playAudio = () => {
+      audio.play().catch(() => {})
+    }
+
+    document.addEventListener('click', playAudio, { once: true })
+    document.addEventListener('scroll', playAudio, { once: true })
+    document.addEventListener('keydown', playAudio, { once: true })
+    document.addEventListener('mousemove', playAudio, { once: true })
+
+    return () => {
+      document.removeEventListener('click', playAudio)
+      document.removeEventListener('scroll', playAudio)
+      document.removeEventListener('keydown', playAudio)
+      document.removeEventListener('mousemove', playAudio)
+    }
+  }, [])
+
+  return (
     <>
-    <div className="bg-div" style={{position:"fixed", top:0, left:0, height:"100vh", width:"100vw"}}/>
-    <main>
+      <Loader />
+
+      <audio
+        ref={audioRef}
+        src="/music/mixkit-silent-descent-614.mp3"
+        loop
+        autoPlay
+      />
+
+      <div
+        className="bg-div"
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          height: "100vh",
+          width: "100vw",
+        }}
+      />
+
+      <main>
       <div className="images">
         <img id='tommorowland' src="/tommorowland.png" alt="" />
         <img id='navy-pier' src="/navy-pier.png" alt="" />
@@ -16,9 +65,20 @@ function App() {
         <img id='kennedy' src="/kennedy.png" alt="" />
         <img id='opera' src="/opera.png" alt="" />
       </div>
-      <Canvas id='canvas-elem' style={{height:"100vh", width:"100vw", position:"fixed", top:0, left:0, zIndex: 2}}>
-        <Dog />
-      </Canvas>
+<Canvas id='canvas-elem' style={{height:"100vh", width:"100vw", position:"fixed", top:0, left:0, zIndex: 2}}>
+  <Dog />
+  <FluidGlass
+      mode="lens"
+      lensProps={{
+          scale: 0.25,
+          ior: 1.15,
+          thickness: 5,
+          chromaticAberration: 0.1,
+          anisotropy: 0.01
+      }}
+  />
+  <PremiumFluid />
+</Canvas>
     </main>
     <section id='section-1'>
       <nav>
@@ -113,6 +173,40 @@ entertainment, arts & culture.</p>
         </div>
       </div>
     </section>
+    <footer>
+      <div className="footer-container">
+        <div className="footer-cities">
+          <span>Chicago<span className="dot">.</span></span>
+          <span>Amsterdam<span className="dot">.</span></span>
+          <span>Paris<span className="dot">.</span></span>
+        </div>
+        <hr className="footer-divider" />
+        <div className="footer-bottom">
+          <div className="footer-left">
+            <span>We'd love to hear from you</span>
+            <span className="footer-separator">——</span>
+            <span className="footer-email">biz@dogstudio.be</span>
+          </div>
+          <div className="footer-center">
+            <span>Privacy Policy</span>
+          </div>
+          <div className="footer-right">
+            <span>Language: 🇺🇸 English ▾</span>
+          </div>
+        </div>
+      </div>
+      <div className="footer-side">
+        <div className="footer-slogan">
+          <p>We</p>
+          <p>Make</p>
+          <p>Good</p>
+          <p>Shit</p>
+        </div>
+        <div className="footer-social">
+          Fb / Ins / Dri / Tw
+        </div>
+      </div>
+    </footer>
     </>
   )
 }
